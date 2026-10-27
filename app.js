@@ -3,6 +3,17 @@ const addTaskButton = document.getElementsByTagName("button")[0];
 const incompleteTaskList = document.getElementById("incompleteTasks");
 const completedTaskList = document.getElementById("completed-tasks");
 
+const createDeleteButton = function () {
+  const deleteButton = document.createElement("button");
+  const deleteIcon = document.createElement("img");
+
+  deleteButton.className = "delete";
+  deleteIcon.src = "./remove.svg";
+  deleteButton.appendChild(deleteIcon);
+
+  return deleteButton;
+};
+
 const createTaskListItem = function (taskText) {
   const taskListItem = document.createElement("li");
 
@@ -10,9 +21,7 @@ const createTaskListItem = function (taskText) {
   const taskLabel = document.createElement("label");
   const taskEditInput = document.createElement("input");
   const editButton = document.createElement("button");
-
-  const deleteButton = document.createElement("button");
-  const deleteIcon = document.createElement("img");
+  const deleteButton = createDeleteButton();
 
   // Keep user-entered task text literal rather than interpreting it as HTML.
   taskLabel.innerText = taskText;
@@ -24,10 +33,6 @@ const createTaskListItem = function (taskText) {
 
   editButton.innerText = "Edit";
   editButton.className = "edit";
-
-  deleteButton.className = "delete";
-  deleteIcon.src = "./remove.svg";
-  deleteButton.appendChild(deleteIcon);
 
   taskListItem.appendChild(completionCheckbox);
   taskListItem.appendChild(taskLabel);
